@@ -1,0 +1,19 @@
+<h1 id="header">
+Stored Images
+</h1>
+
+<section>
+  <table>
+    <tbody>
+      <% @images.reverse_each do |image| %>
+      <tr><td><%= image_tag(image.image_url, width: 400) %></td></tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+
+<div class="field">
+  <p class="control">
+    <%= link_to 'New Image', new_image_path, class: 'button is-primary' %>
+  </p>
+</div>
