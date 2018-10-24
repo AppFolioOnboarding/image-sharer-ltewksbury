@@ -9,7 +9,9 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
 
   def test_index
     get root_url
+
     assert_response :ok
+    assert_select '#header', 'Stored Images'
   end
 
   def test_show
