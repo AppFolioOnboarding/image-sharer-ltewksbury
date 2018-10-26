@@ -13,15 +13,13 @@ class Image < ApplicationRecord
   end
 
   def validate_url
-    begin
-      url = URI.parse(image_url)
-      errors.add(:url, 'invalid') unless url.is_a?(URI::HTTP) || url.is_a?(URI::HTTPS)
-    end
+    url = URI.parse(image_url)
+    errors.add(:url, 'invalid') unless url.is_a?(URI::HTTP) || url.is_a?(URI::HTTPS)
   end
 
-  JPG = '.jpg'
-  JPEG = '.jpeg'
-  PNG = '.png'
+  JPG = '.jpg'.freeze
+  JPEG = '.jpeg'.freeze
+  PNG = '.png'.freeze
 
   # checks that user hasn't passed an invalid image extension
   def extension_valid?
