@@ -26,7 +26,7 @@ class ImageTest < ActiveSupport::TestCase
   end
 
   test 'extensions valid' do
-    [Image::JPG, Image::JPEG, Image::PNG].each do |ext|
+    Image::SUPPORTED_IMAGE_EXTENSIONS.each do |ext|
       @image = Image.new('image_url' => 'http://image' + ext)
       assert @image.save
       assert_not @image.errors.any?
