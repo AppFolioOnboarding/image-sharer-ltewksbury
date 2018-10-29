@@ -3,9 +3,7 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
   end
 
-  def new
-    @image = Image.new
-  end
+  def new; end
 
   def create
     @image = Image.new(image_params)

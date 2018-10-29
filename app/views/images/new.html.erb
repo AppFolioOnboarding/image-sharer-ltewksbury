@@ -2,7 +2,7 @@
   Add a New Image
 </h1>
 
-<% if @image.errors.any? %>
+<% if @image&.errors&.any? %>
     <div id="error_explanation">
       <% @image.errors.messages[:image_url].each do |msg| %>
           <p><%= msg %></p>
