@@ -4,9 +4,9 @@
 
 <% if @image.errors.any? %>
     <div id="error_explanation">
-        <% @image.errors.full_messages.each do |msg| %>
-            <p><%= msg %></p>
-        <% end %>
+      <% @image.errors.messages[:image_url].each do |msg| %>
+          <p><%= msg %></p>
+      <% end %>
     </div>
 <% end %>
 

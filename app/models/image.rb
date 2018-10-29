@@ -1,31 +1,27 @@
 require 'uri'
 
 class Image < ApplicationRecord
-  validate :url_valid?,
-           :extension_valid?
+  validate
 
-  JPG = '.jpg'.freeze
-  JPEG = '.jpeg'.freeze
-  PNG = '.png'.freeze
-  SUPPORTED_IMAGE_EXTENSIONS = [JPG, JPEG, PNG].freeze
+  SUPPORTED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png'].freeze
 
-  private
+  validates_presence_of :image_url, message: "Please provide an image url."
 
-  # checks that start of url is properly formed
+  validate do
+    if image_url.present?
+      errors.add(:image_url, "Image url is not valid.") unless url_valid?
+      errors.add(:image_url, "Image extension is unsupported / invalid.") unless extension_valid?
+    end
+  end
+
   def url_valid?
-    validate_url
-    errors.blank?
-  end
-
-  def validate_url
     url = URI.parse(image_url)
-    errors.add(:url, 'invalid') unless url.is_a?(URI::HTTP) || url.is_a?(URI::HTTPS)
+    return true if url.is_a?(URI::HTTP) || url.is_a?(URI::HTTPS)
+    false
   end
 
-  # checks that user hasn't passed an invalid image extension
   def extension_valid?
     return true if SUPPORTED_IMAGE_EXTENSIONS.any? { |ext| image_url.ends_with?(ext) }
-    errors.add(:extension, 'unsupported/invalid')
     false
   end
 end
