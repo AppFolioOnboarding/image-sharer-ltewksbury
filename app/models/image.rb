@@ -14,12 +14,10 @@ class Image < ApplicationRecord
 
   def url_valid?
     url = URI.parse(image_url)
-    return true if url.is_a?(URI::HTTP) || url.is_a?(URI::HTTPS)
-    false
+    url.is_a?(URI::HTTP) || url.is_a?(URI::HTTPS)
   end
 
   def extension_valid?
-    return true if SUPPORTED_IMAGE_EXTENSIONS.any? { |ext| image_url.ends_with?(ext) }
-    false
+    SUPPORTED_IMAGE_EXTENSIONS.any? { |ext| image_url.ends_with?(ext) }
   end
 end
