@@ -1,0 +1,22 @@
+<h1 id="header">
+  Add a New Image
+</h1>
+
+<% if @image&.errors&.any? %>
+    <div id="error_explanation">
+      <% @image.errors.messages[:image_url].each do |msg| %>
+          <p><%= msg %></p>
+      <% end %>
+    </div>
+<% end %>
+
+<%= form_with scope: :image, url: images_path, local: true do |form| %>
+    <p>
+      <%= form.label :image_url %><br>
+      <%= form.text_field :image_url %>
+    </p>
+
+    <p>
+      <%= form.submit %>
+    </p>
+<% end %>
