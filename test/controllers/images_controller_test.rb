@@ -13,7 +13,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     get root_url
 
     assert_response :ok
-    assert_select '#header', 'Stored Images'
+    # ??
   end
 
   def test_index_with_tag
@@ -36,14 +36,14 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     get image_path(Image.first)
 
     assert_response :ok
-    assert_select '#header', 'Image'
+    # ??
   end
 
   def test_new
     get new_image_path
 
     assert_response :ok
-    assert_select '#header', 'Add a New Image'
+    # ??
   end
 
   def test_create__succeed

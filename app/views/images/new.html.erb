@@ -1,32 +1,27 @@
-<h1 id="header">
-  Add a New Image
-</h1>
+<html>
+  <%= render "nav_header" , new_image: true %>
+  <body>
+  <% if @image&.errors&.any? %>
+      <div id="error_explanation">
+        <% @image.errors.messages[:image_url].each do |msg| %>
+            <div>
+              <%= msg %>
+            </div>
+        <% end %>
+      </div>
+  <% end %>
 
-<% if @image&.errors&.any? %>
-    <div id="error_explanation">
-      <% @image.errors.messages[:image_url].each do |msg| %>
-          <div>
-            <%= msg %>
-          </div>
-      <% end %>
+    <div class="container">
+      <section class="image-form">
+        <%= bootstrap_form_for(@image) do |form| %> 
+          <%= form.text_field :image_url, label: "Image URL:" %> 
+          <%= form.submit value: "Upload Image", class: "btn btn-secondary" %> 
+          <%= form.text_field :tag_list, label: "Add Tags:" %>
+          <%= form.submit value: "Add Tag(s)", class: btn btn-secondary" %>
+        <% end %>
+      </section>
     </div>
-<% end %>
+    <%= render "footer" %>
+  </body>
 
-<%= form_with scope: :image, url: images_path, local: true do |form| %>
-    <div>
-      <%= form.label :image_url %>
-    </div>
-    <div>
-      <%= form.text_field :image_url %>
-    </div>
-    <div>
-      <%= form.label 'Add tags' %>
-    </div>
-    <div>
-      <%= form.text_field :tag_list, placeholder: '(optional)' %>
-    </div>
-    <br>
-    <div>
-      <%= form.submit %>
-    </div>
-<% end %>
+</html>
