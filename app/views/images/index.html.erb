@@ -2,7 +2,7 @@
 <html>
 
   <%= render "nav_header", show_all: true %>
-  
+
   <div>
     <%= form_tag(images_path, method: :get) do %>
     <%= text_field_tag :tag, params[:tag] %>
