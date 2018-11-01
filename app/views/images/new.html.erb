@@ -15,6 +15,10 @@
       <%= form.label :image_url %><br>
       <%= form.text_field :image_url %>
     </p>
+    <p>
+      <%= form.label 'Add tags' %><br>
+      <%= form.text_field :tag_list, placeholder: '(optional)' %>
+    </p>
 
     <p>
       <%= form.submit %>

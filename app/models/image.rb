@@ -1,6 +1,8 @@
 require 'uri'
 
 class Image < ApplicationRecord
+  acts_as_taggable
+
   SUPPORTED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png'].freeze
 
   validates :image_url, presence: { message: 'Please provide an image url.' }
