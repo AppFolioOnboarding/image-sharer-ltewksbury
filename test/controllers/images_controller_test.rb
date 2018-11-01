@@ -13,7 +13,6 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     get root_url
 
     assert_response :ok
-    # ??
   end
 
   def test_index_with_tag
@@ -36,14 +35,12 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     get image_path(Image.first)
 
     assert_response :ok
-    # ??
   end
 
   def test_new
     get new_image_path
 
     assert_response :ok
-    # ??
   end
 
   def test_create__succeed
