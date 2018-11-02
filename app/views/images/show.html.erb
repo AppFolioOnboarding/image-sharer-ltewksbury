@@ -2,7 +2,7 @@
   <%= render "nav_header" %>
 
   <body>
-    <div class="container">
+    <div class="container one-image">
       <%= image_tag(@image.image_url) %>
       <% @image.tag_list.each do |tag| %>
           <%= tag %>
