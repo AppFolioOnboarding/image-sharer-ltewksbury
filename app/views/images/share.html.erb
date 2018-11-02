@@ -1,0 +1,20 @@
+<h1 id="header">
+  Share your amazing image
+</h1>
+
+<section>
+  <%= image_tag(@image.image_url) %>
+</section>
+
+<%= form_with scope: :image, url: share_image_path, local: true do |form| %>
+    <p>
+      <%= form.label 'Send to:' %><br>
+      <%= form.email_field :image_recipient_email, placeholder: 'Enter email address' %><br>
+      <%= form.label 'Message text:' %><br>
+      <%= form.text_field :image_email_msg, placeholder: '(Optional)' %><br>
+    </p>
+
+    <p>
+      <%= form.submit "Share"%>
+    </p>
+<% end %>
