@@ -11,16 +11,20 @@
 <% end %>
 
 <%= form_with scope: :image, url: images_path, local: true do |form| %>
-    <p>
-      <%= form.label :image_url %><br>
+    <div>
+      <%= form.label :image_url %>
+    </div>
+    <div>
       <%= form.text_field :image_url %>
-    </p>
-    <p>
-      <%= form.label 'Add tags' %><br>
+    </div>
+    <div>
+      <%= form.label 'Add tags' %>
+    </div>
+    <div>
       <%= form.text_field :tag_list, placeholder: '(optional)' %>
-    </p>
-
-    <p>
+    </div>
+    <br>
+    <div>
       <%= form.submit %>
-    </p>
+    </div>
 <% end %>
