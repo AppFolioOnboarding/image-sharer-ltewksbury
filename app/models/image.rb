@@ -2,7 +2,7 @@ require 'uri'
 
 class Image < ApplicationRecord
   acts_as_taggable
-  ActsAsTaggableOn.default_parser = ImagesHelper::ImageTagParser
+  ActsAsTaggableOn.default_parser = ImagesStuff::ImageTagParser
 
   SUPPORTED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png'].freeze
 
