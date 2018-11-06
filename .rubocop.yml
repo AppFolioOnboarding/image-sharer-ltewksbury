@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - 'db/schema.rb'
+    - 'db/migrate/*'
     - 'log/**/*'
     - 'tmp/**/*'
     - 'vendor/**/*'
@@ -28,3 +29,4 @@ Style/Documentation:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
