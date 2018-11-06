@@ -4,7 +4,11 @@
 
 <section>
 <%= image_tag(@image.image_url) %>
-  <p> <%= @image.tag_list[0] %> </p>
+  <p>
+  <% @image.tag_list.each do |tag| %>
+      <%= tag %>
+      <% end %>
+  </p>
 </section>
 
 <div class="field">
