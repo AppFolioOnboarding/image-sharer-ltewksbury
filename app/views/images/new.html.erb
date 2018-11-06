@@ -5,7 +5,9 @@
 <% if @image&.errors&.any? %>
     <div id="error_explanation">
       <% @image.errors.messages[:image_url].each do |msg| %>
-          <p><%= msg %></p>
+          <div>
+            <%= msg %>
+          </div>
       <% end %>
     </div>
 <% end %>

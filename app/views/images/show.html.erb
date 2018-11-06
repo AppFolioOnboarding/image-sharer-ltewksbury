@@ -1,16 +1,18 @@
 <section>
-  <h1 id="header"> Image </h1>
+  <h1 id="header">
+    Image
+  </h1>
 </section>
 
 <section>
-<%= image_tag(@image.image_url) %>
+  <%= image_tag(@image.image_url) %>
   <% @image.tag_list.each do |tag| %>
-      <%= tag %>
-      <% end %>
+    <%= tag %>
+  <% end %>
 </section>
 
 <div class="field">
-  <p class="control">
+  <div class="control">
     <%= link_to 'Show All', images_path, class: 'button is-primary' %>
-  </p>
+  </div>
 </div>
