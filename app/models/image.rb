@@ -6,6 +6,8 @@ class Image < ApplicationRecord
 
   SUPPORTED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png'].freeze
 
+  attr_accessor :email_msg, :email_recipient
+
   validates :image_url, presence: { message: 'Please provide an image url.' }
 
   validate do
@@ -13,6 +15,7 @@ class Image < ApplicationRecord
       errors.add(:image_url, 'Image url is not valid.') unless url_valid?
       errors.add(:image_url, 'Image extension is unsupported / invalid.') unless extension_valid?
     end
+    @email_msg = 'from within validate'
   end
 
   def url_valid?

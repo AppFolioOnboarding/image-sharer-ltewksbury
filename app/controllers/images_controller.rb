@@ -1,24 +1,11 @@
 class ImagesController < ApplicationController
+  before_action :fetch_image_from_id, only: %i[show share shared]
+
   def index
     @images = Image.all
   end
 
-  def show
-    @image = Image.find(params[:id])
-
-    respond_to do |format|
-      if @user.save
-        # Tell the UserMailer to send a welcome email after save
-        ImageMailer.with(image: @image).image_email.deliver_now
-
-        format.html { redirect_to(@image, notice: 'Image was successfully sent.') }
-        format.json { render json: image, status: :created, location: @image }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  def show; end
 
   def new; end
 
@@ -27,18 +14,35 @@ class ImagesController < ApplicationController
     if @image.save
       redirect_to @image
     else
-      # error - prompt user to reenter url
       render 'new'
     end
   end
 
-  def share
-    @image = Image.find(params[:id])
+  def share; end
+
+  def shared
+    respond_to do |format|
+      format.html do
+        format_email
+      end
+    end
   end
 
   private
 
+  def format_email
+    ImageMailer.image_email(@image, params[:image][:email_recipient], params[:image][:email_msg]).deliver
+    flash[:success] = 'Email successfully sent!'
+    redirect_to action: 'index'
+  rescue Net::SMTPAuthenticationError, Net::SMTPSyntaxError, Net::SMTPUnknownError => e
+    flash[:success] = 'Unable to deliver email!' + e.message
+  end
+
   def image_params
     params.require(:image).permit(:image_url, :tag_list)
+  end
+
+  def fetch_image_from_id
+    @image = Image.find(params[:id])
   end
 end

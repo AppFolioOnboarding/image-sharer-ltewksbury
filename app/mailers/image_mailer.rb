@@ -1,10 +1,11 @@
+require 'open-uri'
+
 class ImageMailer < ApplicationMailer
-  default from: 'lauren.tewksbury@appfolio.com'
-
-  def welcome_email
-    @image = params[:image] #lt - makes no sense for these fields to be part of the image class
-    @url  = 'https://aqueous-waters-47116.herokuapp.com/'
-    mail(to: 'lauren.tewksbury@appfolio.com', subject: 'This is a test')
+  def image_email(image, email_recipient, email_msg)
+    @image = image
+    @url = 'https://aqueous-waters-47116.herokuapp.com/'
+    @email_msg = email_msg
+    attachments.inline['file.jpg'] = URI.parse(@image.image_url).open(&:read)
+    mail(to: email_recipient, subject: 'check it out')
   end
-
 end

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   resources :images do
     member do
-      post 'share'
+      get 'share'
+      post 'share', to: 'images#shared'
     end
   end
 

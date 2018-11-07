@@ -2,19 +2,34 @@
   Share your amazing image
 </h1>
 
+<% if flash[:success].present? %>
+    <div class="container">
+      <div class="notification is-info" id="notice">
+        <%= flash[:success] %>
+      </div>
+    </div>
+<% end %>
+
 <section>
   <%= image_tag(@image.image_url) %>
 </section>
 
 <%= form_with scope: :image, url: share_image_path, local: true do |form| %>
-    <p>
-      <%= form.label 'Send to:' %><br>
-      <%= form.email_field :image_recipient_email, placeholder: 'Enter email address' %><br>
-      <%= form.label 'Message text:' %><br>
-      <%= form.text_field :image_email_msg, placeholder: '(Optional)' %><br>
-    </p>
-
-    <p>
-      <%= form.submit "Share"%>
-    </p>
+  <div>
+    <%= form.label 'Send to:' %>
+  </div>
+  <div>
+    <%= form.email_field :email_recipient, required: true, placeholder: 'Enter email address' %>
+  </div>
+  <br>
+  <div>
+    <%= form.label 'Message text:' %>
+  </div>
+  <div>
+    <%= form.text_field :email_msg, required: false, placeholder: '(Optional)' %>
+  </div>
+  <br>
+  <div>
+    <%= form.submit "Share", data: {disable_with: "Sending..."} %>
+  </div>
 <% end %>
