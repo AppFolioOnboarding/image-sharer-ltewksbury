@@ -19,11 +19,12 @@
     <div>
       <%= form.text_field :image_url %>
     </div>
+    <br>
     <div>
       <%= form.label 'Add tags' %>
     </div>
     <div>
-      <%= form.text_field :tag_list, placeholder: '(optional)' %>
+      <%= form.text_field :tag_list, required: false, placeholder: '(optional)' %>
     </div>
     <br>
     <div>

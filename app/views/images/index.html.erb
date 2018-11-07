@@ -1,3 +1,11 @@
+<% if flash[:success].present? %>
+    <div class="container">
+      <div class="notification is-info" id="notice">
+        <%= flash[:success] %>
+      </div>
+    </div>
+<% end %>
+
 <h1 id="header">
   Stored Images
 </h1>
