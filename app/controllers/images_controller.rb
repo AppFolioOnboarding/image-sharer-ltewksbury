@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   def index
-    @images = Image.all
+    @images = params[:tag].present? ? Image.tagged_with(params[:tag]) : Image.all
   end
 
   def show
