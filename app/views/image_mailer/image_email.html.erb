@@ -5,9 +5,14 @@
 </head>
 <body>
 <h1>Check out this image!</h1>
+
+<p class='custom-text'> <%= @email_msg %> </p>
+
+<%= image_tag attachments['file.jpg'].url %>
+
 <p>
   To see more amazing photos, just follow this link: <%= @url %>.
 </p>
-<p>It will be a miracle if you actually receive this!</p>
+
 </body>
 </html>
