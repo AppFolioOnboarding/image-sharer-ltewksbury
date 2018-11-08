@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  image_url: MyString
+  image_url: 'https://photos.smugmug.com/France-and-a-little-bit-of-Spain-Fall-2017/i-pQBT87s/0/07e81c1c/X2/DSC05663-X2.jpg'
 
 two:
-  image_url: MyString
+  image_url: 'https://photos.smugmug.com/France-and-a-little-bit-of-Spain-Fall-2017/i-KnL9srz/0/8379873c/X2/DSC05633-X2.jpg'

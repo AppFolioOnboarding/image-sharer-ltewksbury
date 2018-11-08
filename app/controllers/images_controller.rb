@@ -1,10 +1,10 @@
 class ImagesController < ApplicationController
   def index
-    @images = Image.all
+    @images = params[:tag].present? ? Image.tagged_with(tag_params) : Image.all
   end
 
   def show
-    @image = Image.find(params[:id])
+    @image = Image.find(id_params)
   end
 
   def new; end
@@ -21,7 +21,15 @@ class ImagesController < ApplicationController
 
   private
 
+  def id_params
+    params.require(:id)
+  end
+
   def image_params
     params.require(:image).permit(:image_url, :tag_list)
+  end
+
+  def tag_params
+    params.require(:tag)
   end
 end

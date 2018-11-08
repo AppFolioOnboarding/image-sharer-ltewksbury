@@ -2,19 +2,38 @@
   Stored Images
 </h1>
 
-<section>
-  <table>
-    <tbody>
-      <% @images.reverse_each do |image| %>
-        <tr>
-          <td>
-            <%= link_to image_tag(image.image_url, width: 400), image %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</section>
+<div>
+  <%= form_tag(images_path, method: :get) do %>
+    <%= text_field_tag :tag, params[:tag] %>
+    <%= submit_tag 'Search', name: nil %>
+  <% end %>
+</div>
+
+<% if @images.empty? %>
+    <p id="emptySearch"> No images to display. </p>
+<% else %>
+  <section> 
+    <table> 
+      <tbody> 
+      <% @images.reverse_each do |image| %> 
+      <tr> 
+        <td> 
+          <%= link_to image_tag(image.image_url, width: 400), image %> 
+          <br>
+          <div id="tags">
+          <% image.tag_list.each do |tag| %>
+            <% tag %>
+            <%= link_to tag, images_path(tag: tag) %>
+          <% end %>
+          </div>
+        </td> 
+      </tr> 
+      <% end %> 
+      </tbody> 
+    </table> 
+  </section>
+<% end %>
+
 
 <div class="field">
   <div class="control">
