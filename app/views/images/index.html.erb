@@ -3,10 +3,10 @@
 </h1>
 
 <div>
-<%= form_tag(images_path, method: :get) do %>
-  <%= text_field_tag :tag, params[:tag] %>
-  <%= submit_tag 'Search', name: nil %>
-<% end %>
+  <%= form_tag(images_path, method: :get) do %>
+    <%= text_field_tag :tag, params[:tag] %>
+    <%= submit_tag 'Search', name: nil %>
+  <% end %>
 </div>
 
 <% if @images.empty? %>
@@ -20,10 +20,12 @@
         <td> 
           <%= link_to image_tag(image.image_url, width: 400), image %> 
           <br>
+          <div id="tags">
           <% image.tag_list.each do |tag| %>
-          <% tag %>
-          <%= link_to tag, images_path(tag: tag) %>
-          <% end %></p>
+            <% tag %>
+            <%= link_to tag, images_path(tag: tag) %>
+          <% end %>
+          </div>
         </td> 
       </tr> 
       <% end %> 
