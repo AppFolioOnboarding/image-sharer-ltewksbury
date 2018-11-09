@@ -22,6 +22,11 @@ class ImagesController < ApplicationController
     end
   end
 
+  def destroy
+    Image.find(id_params).destroy
+    redirect_to images_path
+  end
+
   private
 
   def id_params

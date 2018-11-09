@@ -9,6 +9,9 @@
           <%= tag %>
         <% end %>
       </h5>
+      <div class="delete">
+        <%= link_to 'Destroy', @image, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
     </div>
 
     <%= render "footer" %>
