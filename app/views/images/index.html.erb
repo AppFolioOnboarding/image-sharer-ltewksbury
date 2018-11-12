@@ -7,32 +7,24 @@
     <%= submit_tag 'Search', name: nil %>
     <% end %>
   </div>
-
   <body>
-    <% if @images.empty? %>
-      <p id="emptySearch"> No images to display. </p>
-    <% else %>
-      <% rev_images = @images.reverse %>
-      <% rev_images.each_slice(3).each do |image_group| %> 
-      <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row"> 
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm"> 
-                  <% image_group.each do |img| %>
-                    <%= link_to image_tag(img.image_url, class: "card-img-top", width: 400), img %>
-                    <div id="tags">
-                      <% image.tag_list.each do |tag| %>
-                      <% tag %>
-                      <%= link_to tag, images_path(tag: tag) %>
-                      <% end %>
-                    </div>
-                  <% end %>
-              </div> 
-            </div>
-          </div> 
-        </div>
+    <% rev_images = @images.reverse %>
+    <% rev_images.each_slice(3).each do |image_group| %> 
+    <div class="album py-5">
+      <div class="container">
+        <div class="row"> 
+          <% if image_group[0].present? then %>
+            <%= render "image_card", img: image_group[0] %>
+          <% end %>
+          <% if image_group[1].present? then %>
+            <%= render "image_card", img: image_group[1] %>
+          <% end %>
+          <% if image_group[2].present? then %>
+            <%= render "image_card", img: image_group[2] %>
+          <% end %>
+        </div> 
       </div>
+    </div>
   <% end %>
   <%= render "footer" %>
   </body>
