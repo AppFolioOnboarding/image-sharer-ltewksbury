@@ -3,10 +3,9 @@ require 'uri'
 class Image < ApplicationRecord
   acts_as_taggable
   ActsAsTaggableOn.default_parser = ImagesStuff::ImageTagParser
+  ActsAsTaggableOn.remove_unused_tags = true
 
   SUPPORTED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png'].freeze
-
-  validates :image_url, presence: { message: 'Please provide an image url.' }
 
   validate do
     if image_url.present?
