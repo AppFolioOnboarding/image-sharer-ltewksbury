@@ -7,25 +7,20 @@
     <%= submit_tag 'Search', name: nil %>
     <% end %>
   </div>
+
   <body>
-    <% rev_images = @images.reverse %>
-    <% rev_images.each_slice(3).each do |image_group| %> 
-    <div class="album py-5">
-      <div class="container">
-        <div class="row"> 
-          <% if image_group[0].present? then %>
-            <%= render "image_card", img: image_group[0] %>
-          <% end %>
-          <% if image_group[1].present? then %>
-            <%= render "image_card", img: image_group[1] %>
-          <% end %>
-          <% if image_group[2].present? then %>
-            <%= render "image_card", img: image_group[2] %>
-          <% end %>
-        </div> 
-      </div>
+  <% @images.reverse.each_slice(3).each do |image_group| %> 
+  <div class="album py-5">
+    <div class="container">
+      <div class="row"> 
+        <% image_group.each do |image| %>
+          <%= render "image_card", image_to_render: image %>
+        <% end %>
+      </div> 
     </div>
+  </div>
   <% end %>
+
   <%= render "footer" %>
   </body>
 </html>

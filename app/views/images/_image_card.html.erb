@@ -1,7 +1,7 @@
 
 <div class="col-md-4">
   <div class="card mb-4 shadow-sm p-3"> 
-    <%= link_to image_tag(img.image_url, class: "card-img-top", width: 400), img %>
+    <%= link_to image_tag(image_to_render.image_url, class: "card-img-top", width: 400), image_to_render %>
   </div> 
   <div id="tags">
     <% img.tag_list.each do |tag| %>

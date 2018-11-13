@@ -1,4 +1,5 @@
 <html>
+<<<<<<< HEAD
   <%= render "nav_header" , new_image: true %>
   <body>
   <% if @image&.errors&.any? %>
@@ -11,11 +12,18 @@
       </div>
   <% end %>
 
+=======
+
+  <%= render "nav_header" , new_image: true %>
+
+  <body>
+>>>>>>> lt - clean up the index.html file (code review feedback)
     <div class="container">
       <section class="image-form">
         <%= bootstrap_form_for(@image) do |form| %> 
           <%= form.text_field :image_url, label: "Image URL:" %> 
           <%= form.submit value: "Upload Image", class: "btn btn-secondary" %> 
+<<<<<<< HEAD
           <%= form.text_field :tag_list, label: "Add Tags:" %>
           <%= form.submit value: "Add Tag(s)", class: btn btn-secondary" %>
         <% end %>
@@ -24,4 +32,12 @@
     <%= render "footer" %>
   </body>
 
+=======
+        <% end %>
+      </section>
+    </div>
+  </body>
+
+  <%= render "footer" %>
+>>>>>>> lt - clean up the index.html file (code review feedback)
 </html>
