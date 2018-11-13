@@ -19,7 +19,6 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     get images_path(tag: '#testing')
 
     assert_response :ok
-    assert_select '#header', 'Stored Images'
     assert_select '#tags', '#testing'
   end
 
@@ -27,7 +26,6 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     get images_path(tag: '#thisshouldfail')
 
     assert_response :ok
-    assert_select '#header', 'Stored Images'
     assert_select '#emptySearch', 'No images to display.'
   end
 

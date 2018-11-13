@@ -2,11 +2,11 @@
 <div class="col-md-4">
   <div class="card mb-4 shadow-sm p-3"> 
     <%= link_to image_tag(image_to_render.image_url, class: "card-img-top", width: 400), image_to_render %>
+    <h5 class='card-title', id="tags">
+      <% image_to_render.tag_list.each do |tag| %>
+      <% tag %>
+      <%= link_to tag, images_path(tag: tag) %>
+      <% end %>
+    </h5>
   </div> 
-  <div id="tags">
-    <% img.tag_list.each do |tag| %>
-    <% tag %>
-    <%= link_to tag, images_path(tag: tag) %>
-    <% end %>
-  </div>
 </div>

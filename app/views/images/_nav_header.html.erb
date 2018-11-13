@@ -11,6 +11,10 @@
           <a class=<% unless local_assigns[:show_all] %> "nav-link active" <% else %> "nav-link disabled" <% end %> href=<%= images_path %> >Show All</a>
         </li>
       </ul>
+      <%= form_tag(images_path, method: :get, class: "form-inline my-2 my-lg-0") do %>
+        <%= text_field_tag :tag, params[:tag], class: "form-control mr-sm-3", placeholder: "Search" %>
+        <%= submit_tag 'Search', name: nil, class: "btn btn-secondary my-2 my-sm-0" %>
+      <% end %>
     </div>
   </div>
 </header>

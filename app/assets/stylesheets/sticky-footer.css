@@ -6,6 +6,7 @@ html {
 }
 body {
     margin-bottom: 60px; /* Margin bottom by footer height */
+    padding-bottom: 60px; /* Make sure tag(s) don't get covered by footer */
 }
 .footer {
     position: fixed;

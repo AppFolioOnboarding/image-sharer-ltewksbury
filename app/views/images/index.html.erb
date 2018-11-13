@@ -1,24 +1,23 @@
 <html>
   <%= render "nav_header", show_all: true %>
 
-  <div>
-    <%= form_tag(images_path, method: :get) do %>
-    <%= text_field_tag :tag, params[:tag] %>
-    <%= submit_tag 'Search', name: nil %>
-    <% end %>
-  </div>
-
   <body>
-  <% @images.reverse.each_slice(3).each do |image_group| %> 
-  <div class="album py-5">
-    <div class="container">
-      <div class="row"> 
-        <% image_group.each do |image| %>
-          <%= render "image_card", image_to_render: image %>
-        <% end %>
-      </div> 
+  <% if @images.empty? then %>
+    <div class="container py-5", id="emptySearch">
+      <h5> No images to display.</h5>
     </div>
-  </div>
+  <% else %>
+    <% @images.reverse.each_slice(3).each do |image_group| %> 
+      <div class="album py-5">
+        <div class="container">
+          <div class="row"> 
+            <% image_group.each do |image| %>
+              <%= render "image_card", image_to_render: image %>
+            <% end %>
+          </div> 
+        </div>
+      </div>
+    <% end %>
   <% end %>
 
   <%= render "footer" %>
