@@ -5,8 +5,8 @@
       <section class="image-form">
         <%= bootstrap_form_for(@image) do |form| %> 
         <div class="form-group">
-          <%= form.text_field :image_url, label: "Image URL:" %> 
-          <%= form.text_field :tag_list, label: "Add Tags:", placeholder: "(Optional)" %>
+          <%= form.text_field :image_url, label: "Image URL:", id: "image_url" %> 
+          <%= form.text_field :tag_list, label: "Add Tags:", placeholder: "(Optional)", id: "image_tags" %>
         </div>
         <div class="form-group">
           <%= form.submit value: "Upload Image", class: "btn btn-secondary" %>

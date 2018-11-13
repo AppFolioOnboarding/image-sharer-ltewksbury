@@ -15,7 +15,7 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     if @image.save
-      redirect_to @image
+      redirect_to @image, notice: 'You have successfully added an image.'
     else
       # error - prompt user to reenter url
       render 'new'
@@ -24,7 +24,7 @@ class ImagesController < ApplicationController
 
   def destroy
     Image.find(id_params).destroy
-    redirect_to images_path
+    redirect_to images_path, notice: 'You have successfully deleted the image.'
   end
 
   private
