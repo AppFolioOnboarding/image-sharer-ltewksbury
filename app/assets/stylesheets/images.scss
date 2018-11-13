@@ -1,3 +1,18 @@
 // Place all the styles related to the Images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*
+ *= require rails_bootstrap_forms
+ */
+
+.image-form {
+  width: 50%;
+}
+
+.one-image img {
+  padding-top: 20px;
+  width: 100%;
+  height: auto;
+}
+

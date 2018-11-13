@@ -7,7 +7,10 @@ class ImagesController < ApplicationController
     @image = Image.find(id_params)
   end
 
-  def new; end
+  def new
+    # Needed so that bootstrap_form_for(@image) works
+    @image = Image.new
+  end
 
   def create
     @image = Image.new(image_params)

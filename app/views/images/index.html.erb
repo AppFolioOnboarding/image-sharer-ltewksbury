@@ -1,42 +1,25 @@
-<h1 id="header">
-  Stored Images
-</h1>
+<html>
+  <%= render "nav_header", show_all: true %>
 
-<div>
-  <%= form_tag(images_path, method: :get) do %>
-    <%= text_field_tag :tag, params[:tag] %>
-    <%= submit_tag 'Search', name: nil %>
+  <body>
+  <% if @images.empty? then %>
+    <div class="container py-5", id="emptySearch">
+      <h5> No images to display.</h5>
+    </div>
+  <% else %>
+    <% @images.reverse.each_slice(3).each do |image_group| %> 
+      <div class="album py-5">
+        <div class="container">
+          <div class="row"> 
+            <% image_group.each do |image| %>
+              <%= render "image_card", image_to_render: image %>
+            <% end %>
+          </div> 
+        </div>
+      </div>
+    <% end %>
   <% end %>
-</div>
 
-<% if @images.empty? %>
-    <p id="emptySearch"> No images to display. </p>
-<% else %>
-  <section> 
-    <table> 
-      <tbody> 
-      <% @images.reverse_each do |image| %> 
-      <tr> 
-        <td> 
-          <%= link_to image_tag(image.image_url, width: 400), image %> 
-          <br>
-          <div id="tags">
-          <% image.tag_list.each do |tag| %>
-            <% tag %>
-            <%= link_to tag, images_path(tag: tag) %>
-          <% end %>
-          </div>
-        </td> 
-      </tr> 
-      <% end %> 
-      </tbody> 
-    </table> 
-  </section>
-<% end %>
-
-
-<div class="field">
-  <div class="control">
-    <%= link_to 'New Image', new_image_path, class: 'button is-primary' %>
-  </div>
-</div>
+  <%= render "footer" %>
+  </body>
+</html>
