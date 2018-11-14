@@ -8,5 +8,8 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    def create_image(url, tag = nil)
+      @image = tag.nil? ? Image.create('image_url' => url) : Image.create('image_url' => url, 'tag_list' => tag)
+    end
   end
 end

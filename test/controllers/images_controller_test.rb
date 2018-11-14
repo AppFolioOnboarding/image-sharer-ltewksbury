@@ -43,7 +43,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
 
   def test_create__succeed
     assert_difference('Image.count', 1) do
-      image_params = { image_url: @good_url }
+      image_params = { image_url: @good_url, tag_list: '#testing' }
       post images_path, params: { image: image_params }
     end
 
