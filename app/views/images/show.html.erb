@@ -1,14 +1,25 @@
 <html>
   <%= render "nav_header" %>
 
+  <% if flash[:notice].present? %>
+    <div class="container">
+      <div class="notification is-primary" id="notice">
+        <%= flash[:notice] %>
+      </div>
+    </div>
+<% end %>
+
   <body>
     <div class="container one-image">
       <%= image_tag(@image.image_url) %>
-      <h5>
+      <h5 id="tags">
         <% @image.tag_list.each do |tag| %>
           <%= tag %>
         <% end %>
       </h5>
+      <div class="delete">
+        <%= link_to 'Delete Image', @image, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
     </div>
 
     <%= render "footer" %>

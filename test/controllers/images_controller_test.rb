@@ -41,6 +41,15 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :ok
   end
 
+  def test_destroy
+    last_id = Image.last.id
+    assert_difference('Image.count', -1) do
+      delete image_path(Image.last)
+    end
+    assert_not Image.exists? last_id
+    assert_redirected_to images_path
+  end
+
   def test_create__succeed
     assert_difference('Image.count', 1) do
       image_params = { image_url: @good_url }

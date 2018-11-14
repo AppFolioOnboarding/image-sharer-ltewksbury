@@ -1,23 +1,31 @@
 <html>
   <%= render "nav_header", show_all: true %>
 
+<% if flash[:notice].present? %>
+    <div class="container">
+      <div class="notification is-primary" id="notice">
+        <%= flash[:notice] %>
+      </div>
+    </div>
+<% end %>
+
   <body>
   <% if @images.empty? then %>
     <div class="container py-5", id="emptySearch">
       <h5> No images to display.</h5>
     </div>
   <% else %>
-    <% @images.reverse.each_slice(3).each do |image_group| %> 
-      <div class="album py-5">
-        <div class="container">
+    <div class="album py-5">
+      <div class="container">
+        <% @images.reverse.each_slice(3).each do |image_group| %> 
           <div class="row"> 
             <% image_group.each do |image| %>
               <%= render "image_card", image_to_render: image %>
             <% end %>
           </div> 
+        <% end %>
         </div>
       </div>
-    <% end %>
   <% end %>
 
   <%= render "footer" %>
