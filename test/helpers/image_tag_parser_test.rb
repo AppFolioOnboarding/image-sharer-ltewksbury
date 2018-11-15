@@ -6,28 +6,30 @@ class ImageTagParserTest < ActiveSupport::TestCase
   end
 
   def test_tags_prepended_with_hash
-    @image = create_image(@good_url, '#testing')
-    assert @image.save
+    @image = new_image(@good_url, '#testing')
+    assert @image.valid?
     assert_equal(@image.tag_list.size, 1)
     assert_equal(@image.tag_list.first, '#testing')
   end
 
   def test_tags_with_hash_not_preprepended_with_hash
-    @image = create_image(@good_url, 'testing')
-    assert @image.save
+    @image = new_image(@good_url, 'testing')
+    assert @image.valid?
     assert_equal(@image.tag_list.size, 1)
     assert_equal(@image.tag_list.first, '#testing')
   end
 
   def test_tags_delimited_by_space
-    @image = create_image(@good_url, '#testing onetwothree')
+    @image = new_image(@good_url, '#testing onetwothree')
+    assert @image.valid?
     assert_equal(@image.tag_list.size, 2)
     assert_equal(@image.tag_list[0], '#testing')
     assert_equal(@image.tag_list[1], '#onetwothree')
   end
 
   def test_tags_not_delimited_by_comma
-    @image = create_image(@good_url, '#testing,onetwothree')
+    @image = new_image(@good_url, '#testing,onetwothree')
+    assert @image.valid?
     assert_equal(@image.tag_list.size, 1)
     assert_equal(@image.tag_list[0], '#testing,onetwothree')
   end
