@@ -12,7 +12,6 @@ class Image < ApplicationRecord
       errors.add(:image_url, 'Image url is not valid.') unless url_valid?
       errors.add(:image_url, 'Image extension is unsupported / invalid.') unless extension_valid?
     end
-    errors.add(:tag_list, 'Please provide an image tag') if tag_list.blank?
   end
 
   def url_valid?
