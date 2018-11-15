@@ -5,14 +5,6 @@ class ImageTagParserTest < ActiveSupport::TestCase
     @good_url = 'https://photos.smugmug.com/France-and-a-little-bit-of-Spain-Fall-2017/i-pQBT87s/0/07e81c1c/X2/DSC05663-X2.jpg'
   end
 
-  def test_tags_required
-    @image = create_image(@good_url)
-    assert_not @image.save
-    @image = create_image(@good_url, '#testing')
-    assert @image.save
-    assert_equal(@image.tag_list.size, 1)
-  end
-
   def test_tags_prepended_with_hash
     @image = create_image(@good_url, '#testing')
     assert @image.save

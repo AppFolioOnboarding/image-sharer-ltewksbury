@@ -36,4 +36,12 @@ class ImageTest < ActiveSupport::TestCase
       assert_not @image.errors.any?
     end
   end
+
+  def test_tags_required
+    @image = create_image(@good_url)
+    assert_not @image.save
+    @image = create_image(@good_url, '#testing')
+    assert @image.save
+    assert_equal(@image.tag_list.size, 1)
+  end
 end

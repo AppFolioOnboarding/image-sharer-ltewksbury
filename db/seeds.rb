@@ -47,7 +47,7 @@ images = [['https://photos.smugmug.com/France-and-a-little-bit-of-Spain-Fall-201
            '#Paris'],
           ['https://photos.smugmug.com/France-and-a-little-bit-of-Spain-Fall-2017/i-2c2tHzW/0/07e87852/X3/DSC04652-X3.jpg',
            '#Paris'],
-          ['https://www.factzoo.com/sites/all/img/montage/large-light-wombat.jpg']]
+          ['https://www.factzoo.com/sites/all/img/montage/large-light-wombat.jpg', '#wombat']]
 
 images.each do |info|
   img = Image.new(image_url: info[0])
