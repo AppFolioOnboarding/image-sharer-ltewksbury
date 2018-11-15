@@ -25,8 +25,7 @@ class AddTagIfEmpty < ActiveRecord::Migration[5.2]
       INSERT INTO taggings(tag_id, taggable_id, taggable_type, context, created_at) SELECT #{placeholder_id}
         AS tag_id, images.id, 'Image', 'tags', '#{Time.now}' FROM images
         LEFT JOIN taggings ON images.id = taggings.taggable_id
-        LEFT JOIN tags ON taggings.tag_id = tags.id
-        WHERE tags.id is null;
+        WHERE taggings.tag_id is null;
     SQL
 
     # how many images have the placeholder tag?
